@@ -1,5 +1,5 @@
 - name: Docker Task 1
-  hosts: demo
+  hosts: ip
   become: true
 
   roles:
