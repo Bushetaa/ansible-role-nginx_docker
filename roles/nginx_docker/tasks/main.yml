@@ -1,0 +1,33 @@
+---
+- name: Install Docker
+  ansible.builtin.package:
+    name: docker.io
+    state: present
+
+- name: Start Docker service
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Pull nginx image
+  community.docker.docker_image:
+    name: "{{ nginx_image }}"
+    source: pull
+
+- name: Run nginx container
+  community.docker.docker_container:
+    name: "{{ nginx_container_name }}"
+    image: "{{ nginx_image }}"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "{{ host_port }}:{{ container_port }}"
+
+- name: Show running containers
+  ansible.builtin.command: docker ps
+  register: docker_ps_output
+
+- name: Print docker ps output
+  ansible.builtin.debug:
+    var: docker_ps_output.stdout_lines

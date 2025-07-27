@@ -1,0 +1,6 @@
+- name: Docker Task 1
+  hosts: demo
+  become: true
+
+  roles:
+      - nginx_docker

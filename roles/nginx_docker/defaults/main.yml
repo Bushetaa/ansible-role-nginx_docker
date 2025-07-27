@@ -1,0 +1,5 @@
+---
+nginx_image: nginx:latest
+nginx_container_name: nginx_server
+host_port: 8080
+container_port: 80
