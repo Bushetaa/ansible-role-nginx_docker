@@ -1,4 +1,6 @@
 galaxy_info:
+  role_name: nginx_docker
+  namespace: bushetaa
   author: Bushetaa
   description: A role to install and run NGINX in Docker
   company: your_company_name
@@ -9,4 +11,5 @@ galaxy_info:
       versions:
         - 7
         - 8
+
 dependencies: []
